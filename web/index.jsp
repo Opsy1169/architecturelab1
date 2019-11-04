@@ -12,7 +12,7 @@
   </head>
   <body>
   <h1>HI THIS IS MY VERY FIRST LAB ITS SO COOL WOAH PLEASE CHECK CARS AND SHOWROOMS PAGES ASAP</h1>
-  <button onclick="location.href='/architecturelab1_war_exploded/carbrowse'">cars</button>
-  <button onclick="location.href='/architecturelab1_war_exploded/second'">click</button>
+  <button onclick="location.href='/architecturelab1_war_exploded/carbrowse'">Cars</button>
+  <button onclick="location.href='/architecturelab1_war_exploded/showroombrowse'">Showrooms</button>
   </body>
 </html>

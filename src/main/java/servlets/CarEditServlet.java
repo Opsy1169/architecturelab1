@@ -17,13 +17,36 @@ import java.util.UUID;
 public class CarEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        req.getParameter("id");
-//        String foo = jsonObject.get("id").getAsString();
         HttpSession session = req.getSession();
-        String s = req.getParameter("id");
+        String idToEdit = req.getParameter("id");
+        Car car = null;
         RequestDispatcher dispatcher = req.getRequestDispatcher("carEditPage.jsp");
-        Car car = DAO.getCarById(UUID.fromString(s));
+        if(idToEdit != null) {
+            car = DAO.getCarById(UUID.fromString(idToEdit));
+        } else {
+            car = new Car();
+        }
         session.setAttribute("car", car);
         dispatcher.forward(req, resp);
+    }
+
+    protected  void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String id = req.getParameter("id");
+        Car car = null;
+        String model = req.getParameter("model") == null ? "" : req.getParameter("model");
+        String manufacturer = req.getParameter("manufacturer") == null ? "" : req.getParameter("manufacturer");
+        if(id.isEmpty()){
+            car = new Car();
+            car.setId(UUID.randomUUID());
+            car.setModel(model);
+            car.setManufacturer(manufacturer);
+            DAO.saveEntity(car);
+        } else {
+            car = DAO.getCarById(UUID.fromString(id));
+            car.setModel(model);
+            car.setManufacturer(manufacturer);
+            DAO.updateEntity(car);
+        }
+        resp.sendRedirect("/architecturelab1_war_exploded/carbrowse");
     }
 }

@@ -41,4 +41,28 @@
         <servlet-name>CarEditServlet</servlet-name>
         <url-pattern>/caredit/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowroomBrowseServlet</servlet-name>
+        <servlet-class>servlets.ShowroomBrowseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowroomBrowseServlet</servlet-name>
+        <url-pattern>/showroombrowse</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ShowroomEditServlet</servlet-name>
+        <servlet-class>servlets.ShowroomEditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowroomEditServlet</servlet-name>
+        <url-pattern>/showroomedit  </url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

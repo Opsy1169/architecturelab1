@@ -1,5 +1,6 @@
 <%@ page import="entities.Car" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="entities.Showroom" %><%--
   Created by IntelliJ IDEA.
   User: Opsymonroe
   Date: 27.10.2019
@@ -20,30 +21,30 @@
     <title>Browse car</title>
 </head>
 <body>
-    <button id="editButton" onclick="redirectToEdit()">Edit</button>
-    <button id="createButton" onclick="redirectToCreate()">Create</button>
-    <button id="deleteButton" onclick="deleteShowroom()">Delete</button>
+<button id="editButton" onclick="redirectToEdit()">Edit</button>
+<button id="createButton" onclick="redirectToCreate()">Create</button>
+<button id="deleteButton" onclick="deleteShowroom()">Delete</button>
 
 <table>
     <thead>
-    <td>manufacturer</td>
-    <td>model</td>
+    <td>Name</td>
+    <td>Address</td>
     </thead>
     <tbody>
 
-        <%
-            List<Car> cars = (List<Car>) request.getSession().getAttribute("car");
-            for(Car car: cars){
-                out.println("<tr id='" + car.getId().toString() + "'>");
-                out.println("<td>" + car.getManufacturer() + "</td>" );
-                out.println("<td>" + car.getModel() + "</td>" );
-                out.println("</tr>");
-            }
-        %>
+    <%
+        List<Showroom> showrooms = (List<Showroom>) request.getSession().getAttribute("showrooms");
+        for(Showroom showroom: showrooms){
+            out.println("<tr id='" + showroom.getId().toString() + "'>");
+            out.println("<td>" + showroom.getName() + "</td>" );
+            out.println("<td>" + showroom.getAddress() + "</td>" );
+            out.println("</tr>");
+        }
+    %>
     </tbody>
 </table>
 
-    <button onclick="location.href = '/architecturelab1_war_exploded'">Back to main</button>
+<button onclick="location.href = '/architecturelab1_war_exploded'">Back to main</button>
 </body>
 
 <script
@@ -66,7 +67,7 @@
     }
 
     function redirectToEdit() {
-        let path = '/architecturelab1_war_exploded/caredit?id=';
+        let path = '/architecturelab1_war_exploded/showroomedit?id=';
         let a = document.getElementsByClassName("selected").item(0)
         if(!a) return;
         path += a.id;
@@ -74,7 +75,7 @@
     }
 
     function redirectToCreate(){
-        let path = '/architecturelab1_war_exploded/caredit';
+        let path = '/architecturelab1_war_exploded/showroomedit';
         location.href=path;
     }
 
@@ -82,7 +83,7 @@
         let a = document.getElementsByClassName("selected").item(0)
         if(!a) return;
         $.ajax({
-            url: '/architecturelab1_war_exploded/carbrowse',
+            url: '/architecturelab1_war_exploded/showroombrowse',
             type: 'POST',
             data: a.id,
             success: function (result) {
