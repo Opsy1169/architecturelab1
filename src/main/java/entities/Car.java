@@ -12,6 +12,11 @@ public class Car {
     private UUID id;
     private String model;
     private String manufacturer;
+    private Integer doorCount;
+    private String decription;
+    private String modelCode;
+    private Boolean isElectrocar;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -63,5 +68,45 @@ public class Car {
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "door_count", nullable = true)
+    public Integer getDoorCount() {
+        return doorCount;
+    }
+
+    public void setDoorCount(Integer doorCount) {
+        this.doorCount = doorCount;
+    }
+
+    @Basic
+    @Column(name = "decription", nullable = true, length = -1)
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
+    @Basic
+    @Column(name = "model_code", nullable = true, length = 32)
+    public String getModelCode() {
+        return modelCode;
+    }
+
+    public void setModelCode(String modelCode) {
+        this.modelCode = modelCode;
+    }
+
+    @Basic
+    @Column(name = "is_electrocar", nullable = true)
+    public Boolean getElectrocar() {
+        return isElectrocar;
+    }
+
+    public void setElectrocar(Boolean electrocar) {
+        isElectrocar = electrocar;
     }
 }

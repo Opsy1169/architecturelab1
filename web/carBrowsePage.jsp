@@ -28,6 +28,9 @@
     <thead>
     <td>manufacturer</td>
     <td>model</td>
+    <td>Door count</td>
+    <td>Is electrocar</td>
+    <td>Model code</td>
     </thead>
     <tbody>
 
@@ -35,8 +38,11 @@
             List<Car> cars = (List<Car>) request.getSession().getAttribute("car");
             for(Car car: cars){
                 out.println("<tr id='" + car.getId().toString() + "'>");
-                out.println("<td>" + car.getManufacturer() + "</td>" );
-                out.println("<td>" + car.getModel() + "</td>" );
+                out.println("<td>" + (car.getManufacturer()==null ? "" : car.getManufacturer()) + "</td>" );
+                out.println("<td>" + (car.getModel() == null ? "" : car.getModel()) + "</td>" );
+                out.println("<td>" + (car.getDoorCount() == null ? "": car.getDoorCount()) + "</td>" );
+                out.println("<td><input type=\"checkbox\" disabled=\"true\"" + (car.getElectrocar() == null? "":car.getElectrocar()?"checked":"") +  "/></td>" );
+                out.println("<td>" + (car.getModelCode() == null ? "" : car.getModelCode()) + "</td>" );
                 out.println("</tr>");
             }
         %>
@@ -87,6 +93,7 @@
             data: a.id,
             success: function (result) {
                 $(a).hide();
+                $(a).removeClass("selected")
             }
 
         })

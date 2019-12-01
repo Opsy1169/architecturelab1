@@ -5,22 +5,13 @@
          version="4.0">
     <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>servlets.Servlet</servlet-class>
+        <servlet-class>servlets.MainPageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>Servlet2</servlet-name>
-        <servlet-class>servlets.Servlet2</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Servlet2</servlet-name>
-        <url-pattern>/second</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>CarBrowseServlet</servlet-name>
@@ -60,7 +51,7 @@
 
     <servlet-mapping>
         <servlet-name>ShowroomEditServlet</servlet-name>
-        <url-pattern>/showroomedit  </url-pattern>
+        <url-pattern>/showroomedit/*</url-pattern>
     </servlet-mapping>
 
 

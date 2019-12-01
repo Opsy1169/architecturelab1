@@ -11,6 +11,8 @@ public class Showroom {
     private UUID id;
     private String name;
     private String address;
+    private Integer capacityInCars;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -62,5 +64,15 @@ public class Showroom {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "capacity_in_cars", nullable = true)
+    public Integer getCapacityInCars() {
+        return capacityInCars;
+    }
+
+    public void setCapacityInCars(Integer capacityInCars) {
+        this.capacityInCars = capacityInCars;
     }
 }

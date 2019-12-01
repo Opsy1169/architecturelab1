@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import dao.DAO;
 import entities.Car;
 import entities.Showroom;
+import services.ShowroomService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class ShowroomEditServlet extends HttpServlet {
+    private static ShowroomService showroomService = ShowroomService.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -23,7 +25,7 @@ public class ShowroomEditServlet extends HttpServlet {
         Showroom showroom = null;
         RequestDispatcher dispatcher = req.getRequestDispatcher("showroomEditPage.jsp");
         if(idToEdit != null) {
-            showroom = DAO.getShowroomById(UUID.fromString(idToEdit));
+            showroom = showroomService.getShowroomById(UUID.fromString(idToEdit));
         } else {
             showroom = new Showroom();
         }
@@ -36,18 +38,27 @@ public class ShowroomEditServlet extends HttpServlet {
         Showroom showroom = null;
         String name = req.getParameter("name") == null ? "" : req.getParameter("name");
         String address = req.getParameter("address") == null ? "" : req.getParameter("address");
+        Integer capacity = parseCapacity(req.getParameter("capacity") == null ? "" : req.getParameter("capacity"));
         if(id.isEmpty()){
             showroom = new Showroom();
             showroom.setId(UUID.randomUUID());
-            showroom.setName(name);
-            showroom.setAddress(address);
-            DAO.saveEntity(showroom);
+            showroomService.fillShowroomFields(showroom, name, address, capacity);
+            showroomService.saveShowroom(showroom);
         } else {
-            showroom = DAO.getShowroomById(UUID.fromString(id));
-            showroom.setName(name);
-            showroom.setAddress(address);
-            DAO.updateEntity(showroom);
+            showroom = showroomService.getShowroomById(UUID.fromString(id));
+            showroomService.fillShowroomFields(showroom, name, address, capacity);
+            showroomService.updateShowroom(showroom);
         }
         resp.sendRedirect("/architecturelab1_war_exploded/showroombrowse");
+    }
+
+    private Integer parseCapacity(String capacity){
+        Integer intCapacity = null;
+        try {
+            intCapacity = Integer.parseInt(capacity);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+        return intCapacity;
     }
 }

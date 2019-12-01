@@ -18,7 +18,7 @@
 
 <html>
 <head>
-    <title>Browse car</title>
+    <title>Browse showrooms</title>
 </head>
 <body>
 <button id="editButton" onclick="redirectToEdit()">Edit</button>
@@ -29,6 +29,7 @@
     <thead>
     <td>Name</td>
     <td>Address</td>
+    <td>Capacity</td>
     </thead>
     <tbody>
 
@@ -38,6 +39,7 @@
             out.println("<tr id='" + showroom.getId().toString() + "'>");
             out.println("<td>" + showroom.getName() + "</td>" );
             out.println("<td>" + showroom.getAddress() + "</td>" );
+            out.println("<td>" + showroom.getCapacityInCars() + "</td>" );
             out.println("</tr>");
         }
     %>
@@ -88,6 +90,7 @@
             data: a.id,
             success: function (result) {
                 $(a).hide();
+                $(a).removeClass("selected")
             }
 
         })
