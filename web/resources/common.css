@@ -1,0 +1,12 @@
+.selected{
+    background-color: blue;
+}
+.button-panel{
+    background-color: darkgray;
+}
+body{
+    background-color: antiquewhite;
+}
+.input-holder{
+    width: 25%;
+}

@@ -7,24 +7,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<style>
-    .selected{
-        background-color: blue;
-    }
-</style>
-
+<style><%@include file="resources/common.css"%></style>
 
 <html>
 <head>
     <title>Browse car</title>
 </head>
 <body>
-    <button id="editButton" onclick="redirectToEdit()">Edit</button>
-    <button id="createButton" onclick="redirectToCreate()">Create</button>
-    <button id="deleteButton" onclick="deleteShowroom()">Delete</button>
-
-<table>
+<div class="button-panel">
+    <button class="btn btn-lg btn-default" id="editButton" onclick="redirectToEdit()">Edit</button>
+    <button class="btn btn-lg btn-default" id="createButton" onclick="redirectToCreate()">Create</button>
+    <button class="btn btn-lg btn-default" id="deleteButton" onclick="deleteShowroom()">Delete</button>
+</div>
+<table class="table">
     <thead>
     <td>manufacturer</td>
     <td>model</td>
@@ -49,7 +49,7 @@
     </tbody>
 </table>
 
-    <button onclick="location.href = '/architecturelab1_war_exploded'">Back to main</button>
+    <button class="btn btn-lg btn-default" onclick="location.href = '/architecturelab1_war_exploded'">Back to main</button>
 </body>
 
 <script
