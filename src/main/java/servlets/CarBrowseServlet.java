@@ -1,12 +1,10 @@
 package servlets;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import dao.DAO;
 import entities.Car;
-import entities.Showroom;
-import services.CarService;
+import services.cars.CarService;
+import services.cars.CarServiceImpl;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,9 @@ import java.util.UUID;
 
 public class CarBrowseServlet extends HttpServlet {
 
-    private CarService carService = CarService.getInstance();
+
+    @EJB(beanName = "CarService")
+    private CarService carService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("doGet");

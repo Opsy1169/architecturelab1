@@ -5,6 +5,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.ejb.Stateless;
+
+
+//@Stateless(name = "HibernateSessionFactory")
 public class HibernateSessionFactory {
 
     private static SessionFactory sessionFactory = buildSessionFactory();

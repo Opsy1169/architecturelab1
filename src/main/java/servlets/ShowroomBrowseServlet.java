@@ -1,12 +1,9 @@
 package servlets;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import dao.DAO;
 import entities.Showroom;
-import services.ShowroomService;
+import services.showrooms.ShowroomService;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +15,9 @@ import java.util.UUID;
 
 public class ShowroomBrowseServlet extends HttpServlet {
 
-    private static ShowroomService showroomService = ShowroomService.getInstance();
+
+    @EJB(beanName = "ShowroomService")
+    private ShowroomService showroomService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("doGet");

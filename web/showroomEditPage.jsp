@@ -26,7 +26,7 @@
     <div hidden="true"> <input type="text" name="id" value="<%out.println(id);%>"></div>
     <div>Name: <input type="text" name="name" value="<%out.println(name);%>" required></div>
     <div>Address: <input type="text" name="address" value="<%out.println(address);%>" required> </div>
-    <div>Capacity in cars: <input type="number" name="capacity" value="<%out.println(capacity);%>" min="3" max="7"> </div>
+    <div>Capacity in cars: <input type="number" name="capacity" value="<%=capacity%>" > </div>
     <div><span> <input type="submit" value="Submit"> </span></div>
 </form>
 <button onclick="location.href = '/architecturelab1_war_exploded/showroombrowse'" >Cancel</button>
