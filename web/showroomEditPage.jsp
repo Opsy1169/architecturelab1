@@ -34,7 +34,7 @@
     <div class="input-holder">Address: <input class="form-control" type="text" name="address" value="<%out.println(address);%>" required> </div>
     <div class="input-holder">Capacity in cars: <input class="form-control" type="number" name="capacity" value="<%=capacity%>"> </div>
     </div>
-    <div class="input-holder"><input type="submit" value="Submit"></div>
+    <div class="input-holder"><input class="btn btn-lg btn-default" type="submit" value="Submit"></div>
 </form>
 <button class="btn btn-lg btn-default" onclick="location.href = '/architecturelab1_war_exploded/showroombrowse'" >Cancel</button>
 </body>
